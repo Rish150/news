@@ -1,0 +1,247 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Remove z-index here */
+}
+
+#container {
+    /* Remove overflow: hidden to ensure dropdown is not clipped */
+}
+
+.navbar {
+    z-index: 1000; /* Ensure navbar is above other elements */
+    background-color: aqua;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.navbar h3 {
+    color: black;
+    font-family: "Sofadi One", system-ui;
+    font-size: 2vw;
+    font-weight: 500;
+}
+
+.navbar-items {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-items ul {
+    position: relative;
+    left: -15vw;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-items ul li {
+    position: relative;
+    left: -15vw;
+}
+
+.navbar-items ul li a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+    
+}
+
+.dropdown .dropbtn {
+
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    
+    display: none;
+    position: absolute;
+    top: 200%;
+    left: 0;
+    background-color: black;
+    width: 200px;
+    z-index: 2000; 
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.heading h1 {
+    text-align: center;
+    font-size: 2vw;
+    padding: 1.5vw;
+}
+
+#news-container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.news {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.news img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.news h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.news p {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.news a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.news a:hover {
+    text-decoration: underline;
+}
+/* carousel */
+.slideshow-container {
+    position: relative;
+    margin: auto;
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  .prev, .next {
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    transition: 0.6s ease;
+  }
+  
+  .prev:hover, .next:hover {
+    background-color: gray;
+  }
+  
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .dots {
+    text-align: center;
+  }
+  
+  /* .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #f0eaea;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  } */
+  
+  .active {
+    background-color: gray;
+  }
+  
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  .news h2{
+    font-size: large;
+  }
+/* Carousel Styles */
+.slideshow-container {
+    position: relative;
+    margin: auto;
+}
+
+.slidepicture {
+    position: relative;
+    cursor: pointer; /* Indicate that the slide is clickable */
+}
+
+.slidepicture img {
+    
+    width: 100%;
+    height: 90vh;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: font-size 0.5s ease; /* Smooth transition for font size */
+}
+
+/* Hover effect on slide */
+.slidepicture:hover .caption {
+    font-size: 2em; /* Increase font size on hover */
+}
+
+/* Hide dots container */
+.dots {
+    display: none; /* Remove dots */
+}
+#footer{
+    padding: 1%;
+    text-align: center;
+    background-color: black;
+    height: 9vh;
+    color: white;
+    font-size: 1.5vw;
+}

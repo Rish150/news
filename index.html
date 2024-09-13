@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Page</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sofadi+One&display=swap');
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div class="navbar">
+            <h3>RishNews</h3>
+            <div class="navbar-items">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Latest</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Automobile</a>
+                        <div class="dropdown-content">
+                            <a href="#">Car Reviews</a>
+                            <a href="#">Latest Models</a>
+                            <a href="#">Tips & Tricks</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Tech</a>
+                        <div class="dropdown-content">
+                            <a href="#">Gadget Reviews</a>
+                            <a href="#">Tech News</a>
+                            <a href="#">How-To Guides</a>
+                        </div>
+                    </li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slideshow-container">
+        <!-- Slides will be added dynamically via JavaScript -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <div class="dots"></div>
+    </div>
+    <br>
+    <header class="heading">
+        <h1>Top Headlines</h1>
+    </header>
+
+    <main>
+        <section id="news-container">
+        </section>
+    </main>
+    <div id="footer">
+        <p>&copy; Copyright</p>
+    </div>
+</body>
+
+<script src="./script.js"></script>
+
+</html>
