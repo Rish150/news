@@ -11,10 +11,14 @@ body {
 #container {
     /* Remove overflow: hidden to ensure dropdown is not clipped */
 }
+.navbar-items #search{
+    text-align: left;
+    justify-content: left;
+}
 
 .navbar {
     z-index: 1000; /* Ensure navbar is above other elements */
-    background-color: aqua;
+    background-color:#3F4E4F;
     height: 8vh;
     display: flex;
     align-items: center;
@@ -23,10 +27,11 @@ body {
 }
 
 .navbar h3 {
-    color: black;
+    color: white;
     font-family: "Sofadi One", system-ui;
     font-size: 2vw;
     font-weight: 500;
+    
 }
 
 .navbar-items {
@@ -47,6 +52,35 @@ body {
     position: relative;
     left: -15vw;
 }
+#search {
+    display: flex;
+    align-items: center;
+}
+
+#search input {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-left: 50px;
+}
+
+#search button {
+    background-color: #3F4E4F;
+    color: white;
+    border: none;
+    padding: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 120px;
+}
+
+#search button:hover {
+    background-color: black;
+}
+
+#search i {
+    color: white;
+}
 
 .navbar-items ul li a {
     color: white;
@@ -54,33 +88,35 @@ body {
     padding: 14px 16px;
     text-decoration: none;
 }
-
+.navbar-items ul li a:hover {
+    background-color: black;
+    padding: 15px 16px; /* Adjust padding as per your need */
+    border-radius: 4px;  /* Optional: Rounded corners for the box */
+}
 .dropdown {
     position: relative;
-    
-}
-
-.dropdown .dropbtn {
-
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    cursor: pointer;
 }
 
 .dropdown-content {
-    
     display: none;
     position: absolute;
-    top: 200%;
+    top: 100%;
     left: 0;
-    background-color: black;
+   /* Set the background color for the dropdown */
     width: 200px;
-    z-index: 2000; 
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+/* Dropdown Content Links */
+ /* .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    background-color: black; 
+}  */
 
 .dropdown-content a {
     color: white;
@@ -88,10 +124,34 @@ body {
     text-decoration: none;
     display: block;
     text-align: left;
+    background-color: black; /* Set default background color for menu items */
+    width: 100%; /* Ensure it takes up the full width of the dropdown */
 }
 
+.dropdown-content a:hover {
+    background-color: red; /* Apply hover effect to the links directly */
+    z-index: 5000;
+}
+
+
+
+/* Hover effect for Dropdown items */
+.dropdown-content a:hover {
+    color: grey;
+   
+     /* Changes background color of dropdown links on hover */
+}
+
+/* Show the dropdown content on hover */
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+/* Hover effect for the main dropdown button */
+.dropdown:hover .dropbtn {
+    background-color: black;
+    padding: 10px 16px;
+    border-radius: 4px;
 }
 
 .heading h1 {
