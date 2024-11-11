@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         slides[slideIndex].style.display = "block";
         if (dots[slideIndex]) dots[slideIndex].className += " active";
-        
+
         slideIndex++;
     }
 
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 if (!data.articles.length) throw new Error('No articles available');
-                
+
                 displayArticles(data.articles);
                 // Call showSlides only after articles have been displayed
                 showSlides();
@@ -129,12 +129,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Event listener for "Home" link
+    const homeLink = document.querySelector('.navbar a[data-category="home"]');
+    if (homeLink) {
+        homeLink.addEventListener('click', (event) => {
+            event.preventDefault();
+            fetchNews("top-headlines?sources=bbc-news");  // Fetch the default news feed
+        });
+    }
+
     // Search functionality
-    document.querySelector('#search input').addEventListener('keypress', (event) => {
+    const searchInput = document.getElementById('search-input');
+    const searchButton = document.querySelector('#search button');
+
+    // Search functionality when pressing Enter or clicking the button
+    function searchNews() {
+        const query = searchInput.value.trim();
+        if (query) fetchNews(`everything?q=${encodeURIComponent(query)}`);
+    }
+
+    // Listen for Enter key press
+    searchInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
-            const query = event.target.value.trim();
-            if (query) fetchNews(`everything?q=${encodeURIComponent(query)}`);
+            searchNews();
         }
+    });
+
+    // Listen for button click
+    searchButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        searchNews();
     });
 });
