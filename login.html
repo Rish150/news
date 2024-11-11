@@ -1,179 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
- 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-    <style media="screen">
-      *,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-body{
-    background-color: #080710;
-}
-.background{
-    width: 430px;
-    height: 520px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
-}
-.shape:first-child{
-    background: linear-gradient(
-        #1845ad,
-        #23a2f6
-    );
-    left: -80px;
-    top: -80px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #ff512f,
-        #f09819
-    );
-    right: -30px;
-    bottom: -80px;
-}
-form{
-    height: 520px;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
-}
-form *{
-    font-family: 'Poppins',sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
-}
-form h3{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
-}
+  <title>Glassmorphism Login Form</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-label{
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-}
-input{
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-}
-::placeholder{
-    color: #e5e5e5;
-}
-button{
-    margin-top: 50px;
-    width: 100%;
-    background-color: #ffffff;
-    color: #080710;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.social{
-  margin-top: 30px;
-  display: flex;
-}
-.social div{
-  background: red;
-  width: 150px;
-  border-radius: 3px;
-  padding: 5px 10px 10px 5px;
-  background-color: rgba(255,255,255,0.27);
-  color: #eaf0fb;
-  text-align: center;
-}
-.social div:hover{
-  background-color: rgba(255,255,255,0.47);
-}
-.social .fb{
-  margin-left: 25px;
-}
-.social i{
-  margin-right: 4px;
-}
+    body {
+      background: #080710;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+    }
 
-    </style>
+    /* Background shapes */
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: -1;
+    }
+
+    .shape {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .shape:first-child {
+      background: linear-gradient(#1845ad, #23a2f6);
+      left: -80px;
+      top: -80px;
+    }
+
+    .shape:last-child {
+      background: linear-gradient(to right, #ff512f, #f09819);
+      right: -30px;
+      bottom: -80px;
+    }
+
+    /* Form Styles */
+    form {
+      width: 400px;
+      background-color: rgba(255, 255, 255, 0.13);
+      padding: 50px 35px;
+      border-radius: 10px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h3 {
+      font-size: 32px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #fff;
+      margin-top: 20px;
+      align-self: flex-start;
+    }
+
+    input {
+      width: 100%;
+      height: 50px;
+      background-color: rgba(255, 255, 255, 0.07);
+      border-radius: 5px;
+      padding: 0 15px;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    input::placeholder {
+      color: #e5e5e5;
+    }
+
+    button {
+      margin-top: 40px;
+      width: 100%;
+      background-color: #ffffff;
+      color: #080710;
+      padding: 15px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #f4f4f4;
+    }
+
+    /* Social icons */
+    .social {
+      display: flex;
+      margin-top: 30px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .social div {
+      background-color: rgba(255, 255, 255, 0.27);
+      color: #eaf0fb;
+      padding: 10px;
+      border-radius: 5px;
+      margin-left: 15px;
+      text-align: center;
+      width: 150px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .social div:hover {
+      background-color: rgba(255, 255, 255, 0.47);
+    }
+
+    .social i {
+      margin-right: 8px;
+    }
+
+  </style>
 </head>
 <body>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    <form>
-        <h3>Login Here</h3>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
 
-        <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
+  <form>
+    <h3>Login Here</h3>
 
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+    <label for="username">Username</label>
+    <input type="text" placeholder="Email or Phone" id="username">
 
-        <button>Log In</button>
-    </form>
-  </body>
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password">
+
+    <button type="submit">Log In</button>
+  </form>
+
   <script>
-  document.querySelector("form").addEventListener("submit", async function(event) {
-    event.preventDefault();
+document.querySelector("form").addEventListener("submit", async function(event) {
+  event.preventDefault();
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-    const scriptURL =  "https://script.google.com/macros/s/AKfycbxM7UXa5ow3etjGQ-5OxmJ9QMo1Hz3xeQE1VPrQRfdSN0MQw09XPDMNSth6iL9OCBJG/exec"; // Replace with your Apps Script URL
+  // Replace with your Google Apps Script URL
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxC9zGOA_Wvk4cMXqo107ykCXGs-3dik8VnAEsupaVPdlkpF0nrP8I6MLgc9qXNcuLW/exec";
 
-    const response = await fetch(scriptURL, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
-    });
-    
-    const result = await response.json();
-    
-    if (result.success) {
-      alert("Login successful!");
-      // Redirect to another page or perform a specific action
-    } else {
-      alert("Invalid username or password.");
-    }
+  const response = await fetch(scriptURL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
   });
+
+  const result = await response.json();
+
+  if (result.success) {
+    alert("Login successful!");
+    window.location.href = "index.html";  // Redirect to the dashboard
+  } else {
+    alert(result.message || "Invalid username or password.");
+  }
+});
   </script>
+</body>
 </html>
