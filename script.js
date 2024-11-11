@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let slideIndex = 0;
     const numSlides = 4;
+    let slideInterval;  // To store the interval ID
 
     function showSlides() {
         const slides = document.getElementsByClassName("slidepicture");
@@ -24,12 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const newsContainer = document.getElementById('news-container');
+    const carouselContainer = document.querySelector('.slideshow-container');
+    const dotsContainer = document.querySelector('.dots');
     const apiKey = "1e3a1989b8744e30a46ce38aebb29c44";
     const baseUrl = "https://newsapi.org/v2/";
 
     function fetchNews(endpoint) {
-        newsContainer.innerHTML = '<p>Loading news...</p>';
-        
+        // Clear previous interval
+        if (slideInterval) clearInterval(slideInterval);
+
+        // Clear previous content before fetching new news
+        newsContainer.innerHTML = '';  // Clear all previous news articles
+        carouselContainer.innerHTML = '';  // Clear carousel
+        dotsContainer.innerHTML = '';  // Clear dots
+
         fetch(`${baseUrl}${endpoint}&apiKey=${apiKey}`)
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
@@ -39,20 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!data.articles.length) throw new Error('No articles available');
                 
                 displayArticles(data.articles);
+                // Call showSlides only after articles have been displayed
                 showSlides();
-                setInterval(showSlides, 5000);
+                // Set interval only after the slides are initialized
+                slideInterval = setInterval(showSlides, 5000);
             })
             .catch(error => {
-                newsContainer.innerHTML = `<p>Error loading news: ${error.message}</p>`;
+                console.error('Error loading news:', error);
+                // Handle error (optional)
             });
     }
 
     function displayArticles(articles) {
-        const carouselContainer = document.querySelector('.slideshow-container');
-        const dotsContainer = document.querySelector('.dots');
-        newsContainer.innerHTML = ''; // Clear previous articles
+        // Filter out articles without images
+        const filteredArticles = articles.filter(article => article.urlToImage);
 
-        articles.slice(0, numSlides).forEach((article, index) => {
+        // Create slides for the carousel
+        filteredArticles.slice(0, numSlides).forEach((article, index) => {
             const slideElement = document.createElement('div');
             slideElement.classList.add('slidepicture');
             slideElement.onclick = () => window.open(article.url, '_blank');
@@ -70,13 +82,14 @@ document.addEventListener('DOMContentLoaded', () => {
             dotsContainer.appendChild(dot);
         });
 
-        articles.slice(numSlides).forEach(article => {
+        // Display the full articles below the carousel
+        filteredArticles.slice(numSlides).forEach(article => {
             const articleElement = document.createElement('div');
             articleElement.classList.add('news-article');
             articleElement.innerHTML = `
                 <div id="alldata">
                     <div class="news">
-                        ${article.urlToImage ? `<img src="${article.urlToImage}" alt="${article.title}">` : ''}
+                        <img src="${article.urlToImage}" alt="${article.title}">
                         <h2>${article.title}</h2>
                         <p><strong>Published At:</strong> ${new Date(article.publishedAt).toLocaleString()}</p>
                         <p>${article.description}</p>
@@ -88,9 +101,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Category filtering based on user selection
+    function filterNews(category) {
+        const categoryMap = {
+            automobile: "top-headlines?category=automobile",
+            tech: "top-headlines?category=technology",
+            business: "top-headlines?category=business",
+            sports: "top-headlines?category=sports",
+            health: "top-headlines?category=health",
+            latest: "top-headlines",
+            all: "top-headlines?sources=bbc-news"
+        };
+
+        const endpoint = categoryMap[category] || categoryMap['latest']; // Default to 'latest' if category is unknown
+        fetchNews(endpoint);
+    }
+
+    // Fetch default news on page load
     fetchNews("top-headlines?sources=bbc-news");
 
-    // Search bar functionality
+    // Event listeners for category filtering
+    document.querySelectorAll('.navbar a[data-category]').forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const category = event.target.getAttribute('data-category');
+            filterNews(category);
+        });
+    });
+
+    // Search functionality
     document.querySelector('#search input').addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();

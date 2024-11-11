@@ -21,29 +21,20 @@
                 <ul>
                     <li id="search">
                         <input type="text" placeholder="Search..." id="search-input">
-                        <button type="button" onclick="searchNews()"><i class="fas fa-search"></i></button>
+                        <button type="button" onclick="searchNews()"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </li>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Latest</a></li>
+                    <!-- Categories Dropdown -->
                     <li class="dropdown">
-                        <a href="#" class="dropbtn"><i class="fas fa-car"></i> Automobile</a>
+                        <a href="#" class="dropbtn">Categories <i class="fa fa-caret-down"></i></a>
                         <div class="dropdown-content">
-                            <a href="#" id="car-reviews">Car Reviews</a>
-                            <a href="#" id="latest-models">Latest Models</a>
-                            <a href="#" id="tips-tricks">Tips & Tricks</a>
-                            <a href="#" id="industry-news">Industry News</a>
+                            <a href="#" data-category="automobile">Automobile</a>
+                            <a href="#" data-category="tech">Tech</a>
+                            <a href="#" data-category="business">Business</a>
+                            <a href="#" data-category="sports">Sports</a>
+                            <a href="#" data-category="health">Health</a>
                         </div>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn"><i class="fas fa-laptop"></i> Tech</a>
-                        <div class="dropdown-content">
-                            <a href="#" id="gadget-reviews">Gadget Reviews</a>
-                            <a href="#" id="tech-news">Tech News</a>
-                            <a href="#" id="how-to-guides">How-To Guides</a>
-                            <a href="#" id="software-updates">Software Updates</a>
-                        </div>
-                    </li>
-                    
                     </li>
                     <li><a href="signup.html">Signup</a></li>
                     <li><a href="login.html">Login</a></li>
@@ -54,7 +45,6 @@
     </div>
 
     <div class="slideshow-container">
-        <!-- Slides will be added dynamically via JavaScript -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
         <div class="dots"></div>
@@ -69,6 +59,7 @@
             <!-- News articles will be dynamically added here -->
         </section>
     </main>
+
     <div id="footer">
         <p>&copy; Copyright</p>
     </div>
